@@ -1,0 +1,107 @@
+.list {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  grid-template-columns: repeat(10, 25fr);
+  gap: 1vw;
+  perspective: 1000px;
+
+  &:hover .list__container:not(:hover) {
+    opacity: 0.65;
+    .list_item {
+      z-index: 100;
+    }
+  }
+  &__container {
+    position: relative;
+    width: 8.5vw;
+    height: 8.5vw;
+    display: block;
+    transition: 0.25s ease opacity;
+    cursor: pointer;
+    user-select: none;
+  }
+  &__item {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: 0.5s ease transform;
+    z-index: 1;
+    word-break: break-all;
+
+    &-active-left {
+      transform: rotateX(0deg) rotateY(90deg);
+    }
+
+    &-active-right {
+      transform: rotateX(0deg) rotateY(-90deg);
+    }
+
+    &-active-top {
+      transform: rotateX(-90deg) rotateY(0deg);
+    }
+
+    &-active-front {
+      transform: rotateX(0deg) rotateY(0deg);
+    }
+
+    &-active-back {
+      transform: rotateX(180deg) rotateY(0deg);
+    }
+
+    &-active-bottom {
+      transform: rotateX(0deg) rotateY(90deg);
+    }
+
+    &-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      overflow: hidden;
+      font-size: 120%;
+      box-sizing: border-box;
+      padding: 0.25rem;
+    }
+    &-top {
+      transform: rotateX(90deg) translateZ(4.25vw);
+      justify-content: center;
+      align-items: center;
+      background-color: #b3e5fc;
+      color: #01579b;
+      font-size: 160%;
+    }
+    &-bottom {
+      background-color: #ffc107;
+      color: #dd6000;
+      transform: rotateX(-90deg) translateZ(4.25vw);
+    }
+
+    &-right {
+      background-color: #ffc107;
+      color: #dd6000;
+      transform: rotateY(90deg) translateZ(4.25vw);
+      justify-content: center;
+      align-items: center;
+      font-size: 160%;
+    }
+    &-left {
+      background-color: #ff5722;
+      color: #7a2207;
+      transform: rotateY(-90deg) translateZ(4.25vw);
+    }
+
+    &-front {
+      transform: rotateX(0deg) translateZ(4.25vw);
+      color: #79022a;
+      font-size: 120%;
+      background-color: #ff80aa;
+    }
+    &-back {
+      background-color: #ff5722;
+      color: #7a2207;
+      transform: rotateX(-180deg) translateZ(4.25vw);
+    }
+  }
+}

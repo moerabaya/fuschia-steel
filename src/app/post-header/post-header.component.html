@@ -1,0 +1,6 @@
+<header class="header">
+  <span *ngIf="selected?.value; else elseBlock">
+    Selected post id: {{ selected?.id }}
+  </span>
+  <ng-template #elseBlock><span>Please select a post</span></ng-template>
+</header>

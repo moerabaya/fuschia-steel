@@ -1,0 +1,24 @@
+<ul class="list">
+  <li
+    class="list__container"
+    *ngFor="let item of dataList"
+    (click)="handleSelect($event, item)">
+    <div
+      class="list__item"
+      [ngClass]="{
+        'list__item-active-front': isSelected('title', item),
+        'list__item-active-right': isSelected('id', item),
+        'list__item-active-left': isSelected('body', item),
+        'list__item-active-top': isSelected('userId', item)
+      }">
+      <div class="list__item-face list__item-front">
+        {{ item.title }}
+      </div>
+      <div class="list__item-face list__item-top">{{ item.userId }}</div>
+      <div class="list__item-face list__item-right">{{ item.id }}</div>
+      <div class="list__item-face list__item-left">{{ item.body }}</div>
+      <div class="list__item-face list__item-back"></div>
+      <div class="list__item-face list__item-bottom"></div>
+    </div>
+  </li>
+</ul>
