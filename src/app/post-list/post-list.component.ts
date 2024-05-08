@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { Selected, SelectedService } from '../services/selected.service';
 import { Subscription } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Item {
   userId: number;
@@ -45,11 +46,9 @@ export class PostListComponent implements OnInit {
   }
 
   fetchData() {
-    this.httpClient
-      .get<Item[]>('https://jsonplaceholder.typicode.com/posts')
-      .subscribe(data => {
-        this.dataList = data;
-      });
+    this.httpClient.get<Item[]>(environment.api).subscribe(data => {
+      this.dataList = data;
+    });
   }
 
   isSelected(value: keyof Item, item: Item): boolean {
